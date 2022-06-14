@@ -21,10 +21,8 @@ script:
 
 after_script:
   - docker images
-  - echo "Hang0762512699" | docker login -u "hang050697" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push hang050697/udagram-api-feed:v3
   - docker push hang050697/udagram-api-user:v1
   - docker push hang050697/udagram-frontend:v1
   - docker push hang050697/reverseproxy:v3
-
-  
