@@ -49,8 +49,7 @@ router.get('/:id',
 router.get('/signed-url/:fileName',
     requireAuth,
     async (req: Request, res: Response) => {
-      console.log(requireAuth);
-      console.log(req.params);
+      console.log('vao:signed-url')
       const {fileName} = req.params;
       const url = AWS.getPutSignedUrl(fileName);
       res.status(201).send({url: url});
@@ -60,8 +59,6 @@ router.get('/signed-url/:fileName',
 router.post('/',
     requireAuth,
     async (req: Request, res: Response) => {
-      console.log(req.body.caption);
-      console.log(req.body.url);
       const caption = req.body.caption;
       const fileName = req.body.url; // same as S3 key name
 
@@ -79,7 +76,6 @@ router.post('/',
       });
 
       const savedItem = await item.save();
-
       savedItem.url = AWS.getGetSignedUrl(savedItem.url);
       res.status(201).send(savedItem);
     });
