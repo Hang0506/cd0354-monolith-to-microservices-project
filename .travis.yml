@@ -8,7 +8,6 @@ services:
 # Scripts to be run such as test
 before_script:
   - echo "Travis Run Project 3"
-  - echo "Test Travis"
 
 script:
   - docker build -t udagram-frontend ./udagram-frontend
