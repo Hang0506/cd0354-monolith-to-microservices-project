@@ -9,3 +9,4 @@ export AWS_REGION=us-east-1
 export AWS_PROFILE=default
 export JWT_SECRET=XiBHDtbrmwppnEX5uO0pEJ2pvCiqIH8Do4CKsqNn
 export URL=http://localhost:8100
+export AWS_SDK_LOAD_CONFIG=1
