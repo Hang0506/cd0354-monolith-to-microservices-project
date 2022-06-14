@@ -1,9 +1,3 @@
-
-
-branches:
-  only:
-    - master
-
 language: node_js
 node_js:
   - 13
@@ -15,9 +9,9 @@ services:
 install:
   - echo "nothing needs to be installed"
 
-# Scripts to be run such as tests
+# Scripts to be run such as test
 before_script:
-  - echo "no tests"
+  - echo "Travis Run Project 3"
 
 
 script:
