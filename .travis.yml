@@ -8,6 +8,7 @@ services:
 # Scripts to be run such as test
 before_script:
   - echo "Travis Run Project 3"
+  - echo "Test Travis"
 
 script:
   - docker build -t udagram-frontend ./udagram-frontend
@@ -15,7 +16,7 @@ script:
   - docker build -t udagram-api-feed ./udagram-api-feed
   - docker tag udagram-api-feed hang050697/udagram-api-feed:v3
   - docker build -t udagram-api-user ./udagram-api-user
-  - docker tag udagram-api-user hang050697/udagram-api-user:v1
+  - docker tag udagram-api-user hang050697/udagram-api-user:v1git 
   - docker build -t reverseproxy ./udagram-reverseproxy
   - docker tag reverseproxy hang050697/reverseproxy:v3
 
