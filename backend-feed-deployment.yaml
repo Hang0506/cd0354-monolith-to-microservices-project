@@ -1,36 +1,23 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    service: udagram-api-feed
-  name: udagram-api-feed
+    service: backend-feed
+  name: backend-feed
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      service: udagram-api-feed
-  replicas: 3
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 25%
-    type: RollingUpdate
+      service: backend-feed
   template:
     metadata:
       labels:
-        service: udagram-api-feed
+        service: backend-feed
     spec:
       containers:
-      - image: hang050697/udagram-api-feed:v3
-        name: udagram-api-feed
-        imagePullPolicy: Always
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "1024Mi"
-            cpu: "500m"
+      - image: hang050697/udagram-api-feed:v5
+        name: backend-feed
+        imagePullPolicy: Always                
         env:
         - name: URL
           valueFrom:
@@ -57,16 +44,16 @@ spec:
             configMapKeyRef:
               name: env-config
               key: JWT_SECRET
-        - name: POSTGRESS_DB
+        - name: POSTGRES_DB
           valueFrom:
             configMapKeyRef:
               name: env-config
-              key: POSTGRESS_DB
-        - name: POSTGRESS_HOST
+              key: POSTGRES_DB
+        - name: POSTGRES_HOST
           valueFrom:
             configMapKeyRef:
               name: env-config
-              key: POSTGRESS_HOST
+              key: POSTGRES_HOST
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -76,11 +63,11 @@ spec:
           valueFrom:
             secretKeyRef:
               name: env-secret
-              key: POSTGRES_USERNAME
+              key: POSTGRES_USERNAME      
         volumeMounts:
         - name: aws-secret
           mountPath: "/root/.aws/"
-          readOnly: true
+          readOnly: true        
       restartPolicy: Always
       volumes:
       - name: aws-secret

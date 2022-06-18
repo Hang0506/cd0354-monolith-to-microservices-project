@@ -15,16 +15,16 @@ spec:
         service: reverseproxy
     spec:
       containers:
-      - image: hang050697/reverseproxy:v3
-        name: reverseproxy
-        imagePullPolicy: Always          
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "250m"
-          limits:
-            memory: "1024Mi"
-            cpu: "500m"       
-        ports:
-        - containerPort: 8080
+        - image: hang050697/udagram-reverseproxy:v1
+          name: reverseproxy
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
       restartPolicy: Always
