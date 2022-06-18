@@ -15,7 +15,7 @@ spec:
         service: backend-user
     spec:
       containers:
-        - image: hang050697/udagram-api-user:v1
+        - image: hang050697/udagram-api-user:v8
           name: backend-user
           imagePullPolicy: Always
           env:

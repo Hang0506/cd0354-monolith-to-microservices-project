@@ -16,5 +16,8 @@ kubectl apply -f reverse-proxy-service.yaml
 
 kubectl expose deployment frontend --type=LoadBalancer --name=publicfrontend
 kubectl expose deployment reverseproxy --type=LoadBalancer --name=publicreverseproxy  
+
 # Nếu update cluster
 # aws eks --region us-east-1 update-kubeconfig --name clusterProject3
+#kubectl autoscale deployment backend-feed --cpu-percent=70 --min=3 --max=5
+# kubectl get configmap/env-config -oyaml

@@ -11,8 +11,6 @@ import { V0_USER_MODELS} from './controllers/v0/model.index';
 
 (async () => {
   await sequelize.addModels(V0_USER_MODELS);
-
-  console.debug("Initialize database connection...");
   await sequelize.sync();
 
   const app = express();
@@ -20,9 +18,6 @@ import { V0_USER_MODELS} from './controllers/v0/model.index';
 
   app.use(bodyParser.json());
 
-  // We set the CORS origin to * so that we don't need to
-  // worry about the complexities of CORS this lesson. It's
-  // something that will be covered in the next course.
   app.use(cors({
     allowedHeaders: [
       'Origin', 'X-Requested-With',
@@ -30,8 +25,7 @@ import { V0_USER_MODELS} from './controllers/v0/model.index';
       'X-Access-Token', 'Authorization',
     ],
     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-    preflightContinue: true,
-    origin: '*',
+    origin: "*",
   }));
 
   app.use('/api/v0/', IndexRouter);
