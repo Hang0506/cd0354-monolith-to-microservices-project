@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 data:
-  AWS_BUCKET: bucket-988376495408-dev
+  AWS_BUCKET: arn:aws:s3:::bucket-988376495408-dev
   AWS_PROFILE: default
   AWS_REGION: us-east-1
   JWT_SECRET: qio6/eo4CLQhk0/iyqWNTwjZw1kjMqqWaagvk/yI
